@@ -95,14 +95,16 @@
         //console.log("hum");
         if(pininput==pindisplayed){
            //console.log("milse vai");
-           document.getElementById("matches").style.display="block";
+           //document.getElementById("matches").style.display="block";
+           IsMatched();
         }else{
-            document.getElementById("notmatched").style.display="block";
+            //document.getElementById("notmatched").style.display="block";
             //document.getElementById("inputbox").value="";
+            Notmatched();
         }
         }
         clean();
-    }
+        } 
 
         //clear section
 
@@ -117,6 +119,20 @@
            numbers= document.getElementById("inputbox").value;
            document.getElementById("inputbox").value=numbers.slice(0,-1);
            //console.log("hoy?");
+        }
+
+        //isMatched section
+
+        function IsMatched(){
+            document.getElementById("matches").style.display="block";
+            document.getElementById("notmatched").style.display="none";
+        }
+
+        //Notmatched Seection
+
+        function Notmatched(){
+            document.getElementById("matches").style.display="none";
+            document.getElementById("notmatched").style.display="block";
         }
 
     </script>
