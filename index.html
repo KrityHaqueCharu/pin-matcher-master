@@ -38,12 +38,12 @@
                               <div class="button" onclick="show('3')" >3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div class="button"  ><</div>
+                                <div class="button" onclick="backspace()" ><</div>
                                 <div class="button" onclick="show('0')" >0</div>
-                                <div class="button">C</div>
+                                <div class="button" onclick="clean()">C</div>
                             </div>
                             <div>
-                                <button type="submit" class="submit-btn">Submit</button>
+                                <button type="submit" class="submit-btn" onclick="check()">Submit</button>
                                 <p class="action-left">3 try left</p>
                             </div>
                     </div>
@@ -51,13 +51,14 @@
             </div>
         </div>
         <div class="notify-section">
-            <p class="notify">❌ Pin Didn't Match, Please try again</p>
-            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+            <p id="notmatched" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="matches" class="notify">✅ Pin Matched... Secret door is opening for you</p>
         </div>
     </div>
 
     <script>
         //Pin Generator button section
+
         pin=document.getElementById("pinbtn");
         pin.addEventListener("click",function(){
         //console.log("tahsin");
@@ -65,16 +66,53 @@
         //console.log(randomnum);
         //s=randomnum.toString();
         document.getElementById("pin").value=randomnum;
+        //document.getElementById("inputbox").value="";
+        clean();
+        hidenotify();
         })
 
         //button display section
+
         function show(val){
             document.getElementById("inputbox").value=document.getElementById("inputbox").value+val;
             //console.log("hello");
         }
 
+        function hidenotify (){
+        document.getElementById("matches").style.display = 'none';
+        document.getElementById("notmatched").style.display = 'none'; 
+     }
+
         //pin matching section
+
+        function check(){
+        pindisplayed=document.getElementById("pin").value;
+        pininput=document.getElementById("inputbox").value;
+        pininputnum=parseInt(pininput);
+        //console.log("hum");
+        if(pininput==pindisplayed){
+           //console.log("milse vai");
+           document.getElementById("matches").style.display="block";
+        }else{
+            document.getElementById("notmatched").style.display="block";
+            //document.getElementById("inputbox").value="";
+        }
+        }
+
+        //clear section
+
+        function clean(){
+            document.getElementById("inputbox").value="";  
+           // console.log(55);
+        }
         
+        //backspace section
+
+        function backspace(){
+           numbers= document.getElementById("inputbox").value;
+           document.getElementById("inputbox").value=numbers.slice(0,-1);
+           //console.log("hoy?");
+        }
 
     </script>
 </body>
