@@ -86,6 +86,9 @@
         //pin matching section
 
         function check(){
+        if(document.getElementById("inputbox").value==""){
+                alert("Please input your pin number");
+            }else{
         pindisplayed=document.getElementById("pin").value;
         pininput=document.getElementById("inputbox").value;
         pininputnum=parseInt(pininput);
@@ -98,6 +101,8 @@
             //document.getElementById("inputbox").value="";
         }
         }
+        clean();
+    }
 
         //clear section
 
